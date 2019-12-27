@@ -1,10 +1,15 @@
-plugins: [
-  {
-    resolve: `gatsby-source-filesystem`,
-    options: {
-      name: `markdown-pages`,
-      path: `${__dirname}/src/markdown-pages`,
-    },
+module.exports = {
+  siteMetadata: {
+    title: `Regards n Stuff`,
   },
-  `gatsby-transformer-remark`,
-]
+  plugins:[
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `markdown-pages`,
+        path: `${__dirname}/src/markdown-pages`,
+      },
+    },
+    `gatsby-transformer-remark`,
+  ],
+}

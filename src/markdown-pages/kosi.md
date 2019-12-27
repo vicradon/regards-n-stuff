@@ -1,7 +1,7 @@
 ---
-path: "/ralph"
+path: "/kosi"
 date: "2019-12-27"
-title: "Ralph's 2019"
+title: "Kosi's 2019"
 people: "
 <h1> People</h1>
 <p>Best Dev Partner - Amaugo Samson</p>

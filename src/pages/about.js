@@ -1,5 +1,5 @@
 import React from 'react'
-import Layout from '../component/layout'
+import PageLayout from '../component/pageLayout'
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => { console.log(theme); return {
@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => { console.log(theme); return {
 const About = () => {
   const classes = useStyles();
   return (
-    <Layout>
+    <PageLayout>
       <h2>About</h2>
       <p>This is a litle fun app I made, just for the season.</p>
       <h3>Connect with me</h3>
@@ -40,7 +40,7 @@ const About = () => {
           <i className={`fa fa-dev ${classes.link}`}></i>
         </a>
       </div>
-    </Layout>
+    </PageLayout>
   )
 }
 

@@ -1,11 +1,4 @@
-import React, { useState, useRef } from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline'
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
-import { fade, makeStyles } from '@material-ui/core/styles';
+import React, { useState } from 'react'
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
@@ -13,16 +6,19 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline'
-import MemoryOutlinedIcon from '@material-ui/icons/MemoryOutlined';
-import EmojiObjectsOutlinedIcon from '@material-ui/icons/EmojiObjectsOutlined';
-import MicOutlinedIcon from '@material-ui/icons/MicOutlined';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
-import LockOpenOutlinedIcon from '@material-ui/icons/LockOpenOutlined';
 import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined';
+import HomeIcon from '@material-ui/icons/Home';
 import { Link } from 'gatsby'
 import { handleShare } from './utils'
-import '../../node_modules/font-awesome/css/font-awesome.min.css';
+import Box from '@material-ui/core/Box'
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
+import InputBase from '@material-ui/core/InputBase';
+import { fade, makeStyles } from '@material-ui/core/styles';
+import { graphql, useStaticQuery } from 'gatsby'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -83,13 +79,25 @@ const useStyles = makeStyles(theme => ({
     textDecoration: 'none',
     color: "inherit"
   }
-  // searchCont: { 
-  //   display: "flex", 
-  //   justifyContent: "flex-end" 
-  // }
 }));
 
-function SearchAppBar() {
+export default function SearchAppBar() {
+  // const frontmatter = data.markdownRemark.frontmatter;
+  // const { markdownRemark } = data
+  // const { frontmatter } = markdownRemark
+  const data = useStaticQuery(graphql`
+  query HeaderQuery {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`)
+const a = data.site.siteMetadata.title
+console.log(a)
+  // const frontmatter = data.markdownRemark.frontmatter;
+
   const classes = useStyles();
 
   const [inputvalue, setValue] = useState('')
@@ -117,29 +125,15 @@ function SearchAppBar() {
             onClose={() => setOpen(false)}
             onOpen={() => setOpen(true)}
           >
+            <Typography component="h1">
+              <Box pb={0} p={3}>Records and Stuff</Box>
+            </Typography>
             <List className={classes.list}  >
-              <Link className={classes.link} to="/">
+              {/* to={`/${frontmatter.path}`} */}
+              <Link className={classes.link} >
                 <ListItem button>
-                  <ListItemIcon><PeopleOutlineIcon /></ListItemIcon>
-                  <ListItemText primary={'People'} />
-                </ListItem>
-              </Link>
-              <Link className={classes.link} to='/concepts'>
-                <ListItem button>
-                  <ListItemIcon><EmojiObjectsOutlinedIcon /></ListItemIcon>
-                  <ListItemText primary={'Concepts'} />
-                </ListItem>
-              </Link>
-              <Link className={classes.link} to='/best-records'>
-                <ListItem button>
-                  <ListItemIcon><MicOutlinedIcon /></ListItemIcon>
-                  <ListItemText primary={'Best Records'} />
-                </ListItem>
-              </Link>
-              <Link className={classes.link} to='/memories/'>
-                <ListItem button>
-                  <ListItemIcon><MemoryOutlinedIcon /></ListItemIcon>
-                  <ListItemText primary={'Memories'} />
+                  <ListItemIcon><HomeIcon /></ListItemIcon>
+                  <ListItemText primary={'Home'} />
                 </ListItem>
               </Link>
               <Link className={classes.link} to='/about/'>
@@ -196,34 +190,15 @@ function SearchAppBar() {
   );
 }
 
-
-export default function Layout({ children }) {
-  const layoutcont = useRef(null);
-
-  // const x = window.matchMedia("(max-width: 450px)")
-  // function myFunction(x) {
-  //   if (x.matches) {
-  //     layoutcont.current.style.width = "calc(100vw - 50px)";
-  //   }
-  // }
-  const useStyles = makeStyles(theme => ({
-    layout: {
-      margin: "0 auto",
-      width: "400px",
-      [theme.breakpoints.down('sm')]: {
-        width: "calc(100vw - 50px)"
+/*
+export const pageQuery = graphql`
+  query($path: String!) {
+    markdownRemark(frontmatter: { path: { eq: $path } }) {
+      html
+      frontmatter {
+        path
       }
     }
-  }))
-  const classes = useStyles();
-  return (
-    <div>
-      <CssBaseline />
-      <SearchAppBar />
-      <div ref={layoutcont} className={classes.layout}>
-        {/* <h2>2019 - Regards n Stuff</h2> */}
-        {children}
-      </div>
-    </div>
-  )
-}
+  }
+`
+*/
