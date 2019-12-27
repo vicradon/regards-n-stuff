@@ -2,14 +2,14 @@ require("dotenv").config()
 
 module.exports = {
   siteMetadata: {
-    title: `Regards n Stuff`,
+    title: `Simple Gatsby Blog`,
   },
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `markdown-pages`,
-        path: `${__dirname}/src/markdown-pages`,
+        name: `markdown-posts`,
+        path: `${__dirname}/src/markdown-posts`,
       },
     },
     `gatsby-transformer-remark`,
