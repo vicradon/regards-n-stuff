@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
@@ -88,8 +88,11 @@ export default function SearchAppBar() {
   const handleChange = (event) => {
     setValue(event.target.value)
   }
-  const [open, setOpen] = useState(false)
-  const slug = localStorage.getItem('slug');
+  const [open, setOpen] = useState(false);
+  let slug = '';
+  useEffect(() => {
+    slug = localStorage.getItem('slug');
+  }, [])
 
   return (
     <div className={classes.root}>
