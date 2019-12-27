@@ -1,5 +1,5 @@
 ---
-path: '/'
+path: '/blog1'
 title: "The nemb returns"
 date: "27-12-19"
 ---
