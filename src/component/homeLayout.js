@@ -17,6 +17,9 @@ export default function HomeLayout({ children, people, concepts, memories, bestR
       }
     }
   }))
+  const regex = new RegExp('.+?\/')
+  const slug = window.location.href.split('').reverse().join('').match(regex)[0].split('').reverse().join('');
+  localStorage.setItem('slug', slug);
   const classes = useStyles();
   return (
     <div>

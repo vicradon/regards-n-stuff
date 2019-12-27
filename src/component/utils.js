@@ -9,3 +9,6 @@ export function handleShare(){
       .catch((error) => console.log('Error sharing', error));
   }
 }
+export function handleCreate(){
+  
+}

@@ -10,7 +10,7 @@ import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined';
 import HomeIcon from '@material-ui/icons/Home';
 import { Link } from 'gatsby'
-import { handleShare } from './utils'
+import { handleShare, handleCreate } from './utils'
 import Box from '@material-ui/core/Box'
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -18,7 +18,6 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
-import { graphql, useStaticQuery } from 'gatsby'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -82,22 +81,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function SearchAppBar() {
-  // const frontmatter = data.markdownRemark.frontmatter;
-  // const { markdownRemark } = data
-  // const { frontmatter } = markdownRemark
-  const data = useStaticQuery(graphql`
-  query HeaderQuery {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`)
-const a = data.site.siteMetadata.title
-console.log(a)
-  // const frontmatter = data.markdownRemark.frontmatter;
-
+  
   const classes = useStyles();
 
   const [inputvalue, setValue] = useState('')
@@ -105,7 +89,7 @@ console.log(a)
     setValue(event.target.value)
   }
   const [open, setOpen] = useState(false)
-
+  const slug = localStorage.getItem('slug');
 
   return (
     <div className={classes.root}>
@@ -129,8 +113,8 @@ console.log(a)
               <Box pb={0} p={3}>Records and Stuff</Box>
             </Typography>
             <List className={classes.list}  >
-              {/* to={`/${frontmatter.path}`} */}
-              <Link className={classes.link} >
+
+              <Link className={classes.link} to={slug} >
                 <ListItem button>
                   <ListItemIcon><HomeIcon /></ListItemIcon>
                   <ListItemText primary={'Home'} />
@@ -147,7 +131,7 @@ console.log(a)
                 <ListItemIcon><ShareOutlinedIcon /></ListItemIcon>
                 <ListItemText primary={'Share'} />
               </ListItem>
-              <ListItem onClick={handleShare} button>
+              <ListItem onClick={handleCreate} button>
                 <ListItemIcon><i className='fa fa-paint-brush'></i></ListItemIcon>
                 <ListItemText primary={'Create Yours'} />
               </ListItem>

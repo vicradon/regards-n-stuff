@@ -2,7 +2,7 @@ import React from 'react'
 import PageLayout from '../component/pageLayout'
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(theme => { console.log(theme); return {
+const useStyles = makeStyles(theme => { return {
   link: {
     textDecoration: 'none',
     color: theme.palette.primary.dark,
