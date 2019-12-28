@@ -1,9 +1,9 @@
 ---
-path: '/post1'
-title: "The nemb returns"
+path: '/post2'
+title: "The nemb fights for freedom"
 date: "2019-12-27"
 ---
-<h1>Lorem Ipsum</h1>
+<h1>Ipsum Lorem</h1>
 <p>
   Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, fugiat commodi repellendus, ipsam dolorum sint laudantium fuga harum iure sunt officia, in totam optio officiis!
 </p>
