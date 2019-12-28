@@ -13,6 +13,9 @@ const useStyles = makeStyles(theme => ({
     borderRadius: '5px',
     padding: '0 0.5rem',
     marginBottom:'1rem'
+  },
+  date: {
+    fontSize:'0.9rem'
   }
 }))
 
@@ -29,7 +32,7 @@ export default function Index({ data }) {
               <div className={classes.post}>
                 <h3>{x.node.frontmatter.title}</h3>
                 <p dangerouslySetInnerHTML={{ __html: x.node.excerpt }} />
-                <p>Date Written: {x.node.frontmatter.date}</p>
+                <p className = {classes.date}>Date Written: {x.node.frontmatter.date}</p>
               </div>
             </Link>
           })

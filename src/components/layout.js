@@ -5,7 +5,9 @@ const useStyles = makeStyles(theme => ({
   layout: {
     width:'400px',
     margin:'0 auto',
-    // [theme.breakpoints]
+    [theme.breakpoints.down('xs')]: {
+      width: 'calc(100vw - 50px)',
+    },
   }
 }))
 

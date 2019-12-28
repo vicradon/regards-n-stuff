@@ -1,14 +1,14 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import makeStyles from '@material-ui/core/styles/makeStyles'
+// import makeStyles from '@material-ui/core/styles/makeStyles'
 
-const useStyles = makeStyles(theme => ({
+// const useStyles = makeStyles(theme => ({
  
-}))
+// }))
 
 export default function Template({ data }) {
-  const classes = useStyles();
+  // const classes = useStyles();
   const { markdownRemark } = data
   const { frontmatter, html } = markdownRemark
   return (
