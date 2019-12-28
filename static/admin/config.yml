@@ -1,31 +1,25 @@
 backend:
   name: github
   repo: vicradon/regards-n-stuff
+# backend:
+#   name: test-repo
 media_folder: static/assets
 public_folder: assets
 collections:
-  - name: blog
-    label: Blog
-    folder: blog
-    create: true
-    fields:
-      - { name: path, label: Path }
-      - { name: date, label: Date, widget: datetime }
-      - { name: title, label: Title }
-      - { name: body, label: Body, widget: markdown }
-      - label: 'Cats'
-        name: "cats"
-        widget: list
+  - name: "pages"
+    label: "Pages"
+    files:
+      - file: "src/markdown-posts/post1.md"
+        label: "First Post"
+        name: "post1"
         fields:
-          - { label: "Name", name: "name", widget: "string"}
-          - { label: "Description", name: "description", widget: "text"}
-
-  - name: products
-    label: Our Products
-    folder: products_and_services
-    create: true
-    fields:
-      - { name: slug, label: Slug }
-      - { name: date, label: Date, widget: datetime }
-      - { name: title, label: Title }
-      - { name: body, label: Body, widget: markdown }
+          - { label: "path", name: "path", widget: "string"}
+          - { label: "title", name: "title", widget: "text"}
+          - { label: "date", name: "date", widget: "datetime"}
+      - file: "src/markdown-posts/post2.md"
+        label: "Second Post"
+        name: "post2"
+        fields:
+          - { label: "path", name: "path", widget: "string"}
+          - { label: "title", name: "title", widget: "text"}
+          - { label: "date", name: "date", widget: "datetime"}
