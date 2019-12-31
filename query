@@ -1,0 +1,37 @@
+query site {
+  site {
+    siteMetadata {
+      title
+    }
+  }
+}
+
+query markdown {
+  allMarkdownRemark {
+    edges {
+      node {
+        excerpt(pruneLength: 30)
+        frontmatter {
+          date(formatString: "DD MMMM YYYY")
+          path
+          title
+        }
+      }
+    }
+  }
+}
+
+query firestore {
+  allUsers {
+    nodes {
+      posts {
+        content
+        title
+      }
+      profile {
+        username
+      }
+    }
+    totalCount
+  }
+}

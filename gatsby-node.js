@@ -5,6 +5,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions
 
   const blogPostTemplate = path.resolve(`src/templates/blogTemplate.js`)
+  const myYearTemplate = path.resolve(`src/templates/myYearTemplate.js`)
 
   const result = await graphql(`
     {
@@ -17,6 +18,13 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
             frontmatter {
               path
             }
+          }
+        }
+      }
+      allMyYearUsers {
+        nodes {
+          profile {
+            nickname
           }
         }
       }
@@ -34,6 +42,14 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       path: node.frontmatter.path,
       component: blogPostTemplate,
       context: {}, // additional data can be passed via context
+    })
+  })
+
+  result.data.allMyYearUsers.nodes.forEach(node => {
+    createPage({
+      path: node.profile.nickname,
+      component: myYearTemplate,
+      context: {}
     })
   })
 }
