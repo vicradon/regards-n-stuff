@@ -14,7 +14,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-firestore',
       options: {
-        credential: require("./firebase-private.json"),
+        credential: require("./firebase-cred.json"),
         types: [
           {
             type: 'Users',
