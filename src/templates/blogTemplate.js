@@ -7,7 +7,7 @@ import { graphql } from "gatsby"
  
 // }))
 
-export default function Template({ data }) {
+export default function BlogTemplate({ data }) {
   // const classes = useStyles();
   const { markdownRemark } = data
   const { frontmatter, html } = markdownRemark

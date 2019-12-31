@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-export default function Template({ data }) {
+export default function YearTemplate({ data }) {
   console.log(data)
   return <p>Hello</p>
   // return (<p></p>{data})
@@ -29,5 +29,5 @@ query ($path: String!) {
       }
     }
   }
-}
+} 
 `
